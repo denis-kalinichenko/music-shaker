@@ -1,1 +1,29 @@
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+}
+
+#canvas {
+    width: 320px;
+    height: 320px;
+    background: #ccc;
+    position: relative;
+    margin: 2em auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: green;
+    cursor: pointer;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+#results {
+    text-align: center;
+}
