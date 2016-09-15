@@ -1,0 +1,17 @@
+{
+  "name": "music-shaker",
+  "homepage": "https://github.com/denis-kalinichenko/music-shaker",
+  "authors": [
+    "Denys Kalinichenko <d.kalinichenkooo@gmail.com>"
+  ],
+  "description": "",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

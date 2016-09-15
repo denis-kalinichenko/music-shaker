@@ -1,0 +1,13 @@
+{
+  "domain": "localhost",
+  "protocol": "http",
+  "port": 80,
+  "mongoose": {
+    "uri": "mongodb://localhost/music-shaker"
+  },
+  "secret": "superSecretSecretKey",
+  "lastfm": {
+    "api_key": "blablabla",
+    "secret": "blablabla"
+  }
+}

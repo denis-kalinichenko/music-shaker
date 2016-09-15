@@ -1,0 +1,36 @@
+{
+  "name": "music-shaker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denis-kalinichenko/music-shaker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/denis-kalinichenko/music-shaker/issues"
+  },
+  "homepage": "https://github.com/denis-kalinichenko/music-shaker#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "lodash": "^4.15.0",
+    "mongoose": "^4.5.8",
+    "mongoose-auto-increment": "^5.0.1",
+    "nconf": "^0.8.4",
+    "passport": "^0.3.2",
+    "passport-lastfm": "^1.0.1",
+    "pug": "^2.0.0-beta6",
+    "synaptic": "^1.0.8"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.2"
+  }
+}
