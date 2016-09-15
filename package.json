@@ -22,6 +22,7 @@
     "connect-flash": "^0.1.1",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
+    "lastfmapi": "^0.1.1",
     "lodash": "^4.15.0",
     "mongoose": "^4.5.8",
     "mongoose-auto-increment": "^5.0.1",
