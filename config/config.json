@@ -1,7 +1,7 @@
 {
   "domain": "localhost",
   "protocol": "http",
-  "port": 80,
+  "port": 8080,
   "mongoose": {
     "uri": "mongodb://localhost/music-shaker"
   },
