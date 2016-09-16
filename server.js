@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('superSecret', config.get("secret"));
 app.use(session({ secret: config.get("secret") })); // session secret
+app.use(require('./middleware/loadUser'));
 
 var port = config.get("port") || 8080;
 

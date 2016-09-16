@@ -18,7 +18,7 @@ router.get('/callback', function (req, res, next) {
         lfm.setSessionCredentials(session.name, session.key);
         lfm.user.getInfo(function(err, info) {
             if(err){
-                return res.render('error', {title: "Something went wrong", message: err.message})
+                return res.render('error', {title: "Something went wrong", message: err.message});
             }
 
             var user = new User();
@@ -26,9 +26,25 @@ router.get('/callback', function (req, res, next) {
             user.realname = info.realname;
             user.session_key = session.key;
             user.save(function (err, user) {
-                if (err)
-                    res.send(err);
-                res.json(user);
+                if (err) {
+                    if(err.code === 11000) {
+                        User.findOneAndUpdate({name: info.name}, {$set:{session_key:session.key}}, {new: true}, function(err, _user){
+                            if(err){
+                                return res.render('error', {title: "Something went wrong", message: err.errmsg});
+                            }
+
+                            req.session.name = _user.name;
+                            req.session.realname = _user.realname;
+                            res.redirect("/");
+                        });
+                    } else {
+                        res.render('error', {title: "Something went wrong", message: err.errmsg});
+                    }
+                } else {
+                    req.session.name = user.name;
+                    req.session.realname = user.realname;
+                    res.redirect("/");
+                }
             });
         });
 
@@ -39,8 +55,13 @@ router.get('/callback', function (req, res, next) {
 // LOGOUT ==============================
 // =====================================
 router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+    req.session.destroy(function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
 });
 
 module.exports = router;

@@ -6,7 +6,13 @@ var config = require('../config');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'OMP' });
+    if(req.user)
+    {
+        res.redirect('/demo');
+    }
+        else {
+        res.render('index', { title: 'OMP' });
+    }
 });
 
 module.exports = router;
