@@ -25,7 +25,6 @@
     "lastfmapi": "^0.1.1",
     "lodash": "^4.15.0",
     "mongoose": "^4.5.8",
-    "mongoose-auto-increment": "^5.0.1",
     "nconf": "^0.8.4",
     "pug": "^2.0.0-beta6",
     "synaptic": "^1.0.8"

@@ -6,18 +6,14 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 var session = require('express-session');
-var flash = require("connect-flash");
 var config = require('./config');
 var connection = mongoose.connect(config.get("mongoose:uri"));
-autoIncrement.initialize(connection);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('superSecret', config.get("secret"));
 app.use(session({ secret: config.get("secret") })); // session secret
-app.use(flash());
 
 var port = config.get("port") || 8080;
 
