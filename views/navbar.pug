@@ -18,22 +18,20 @@ block navbar
                             span.sr-only (current)
                     li
                         a(href='#') Link
-                ul.nav.navbar-nav.navbar-right
-                    li
-                        a(href='#') Link
-                    li.dropdown
-                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                            | Denis
-                            span.caret
-                        ul.dropdown-menu
-                            li
-                                a(href='#') Action
-                            li
-                                a(href='#') Another action
-                            li
-                                a(href='#') Something else here
-                            li.divider(role='separator')
-                            li
-                                a(href='/auth/logout') Logout
-            // /.navbar-collapse
-        // /.container-fluid
+                if session.name
+                    ul.nav.navbar-nav.navbar-right
+                        li.dropdown
+                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Hi, #{session.name}
+                                |&nbsp;
+                                span.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href='#') Action
+                                li
+                                    a(href='#') Another action
+                                li
+                                    a(href='#') Something else here
+                                li.divider(role='separator')
+                                li
+                                    a(href='/auth/logout') Logout

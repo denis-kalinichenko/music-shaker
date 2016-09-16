@@ -15,6 +15,10 @@ app.use(bodyParser.json());
 app.set('superSecret', config.get("secret"));
 app.use(session({ secret: config.get("secret") })); // session secret
 app.use(require('./middleware/loadUser'));
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
 
 var port = config.get("port") || 8080;
 
