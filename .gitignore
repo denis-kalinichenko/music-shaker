@@ -86,3 +86,4 @@ jspm_packages
 .idea/
 
 config/config.json
+public/components
