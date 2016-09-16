@@ -7,7 +7,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-var passport = require('passport');
 var session = require('express-session');
 var flash = require("connect-flash");
 var config = require('./config');
@@ -18,8 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('superSecret', config.get("secret"));
 app.use(session({ secret: config.get("secret") })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
 var port = config.get("port") || 8080;
@@ -33,7 +30,7 @@ app.set('view engine', 'pug');
 
 var router = express.Router();
 var index = require("./routes/index");
-var auth = require("./routes/auth")(passport);
+var auth = require("./routes/auth");
 var demo = require("./routes/demo");
 
 router.use(function (req, res, next) {

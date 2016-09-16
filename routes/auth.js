@@ -1,67 +1,46 @@
 var express = require('express');
 var router = express.Router();
-var passport = require("passport");
-var LastFMStrategy = require('passport-lastfm');
-var _ = require('lodash');
-var cb_url = 'http://localhost:8000';
 var config = require("../config");
+var lfm = require("../lastfm");
+var User = require('../models/user');
 
-// passport.use(new LastFmStrategy({
-//     'api_key': process.env.LASTFM_KEY,
-//     'secret': process.env.LASTFM_SECRET,
-//     'callbackURL': cb_url + '/auth/lastfm/callback'
-// }, function(req, sessionKey, done) {
-//     // Find/Update user's lastfm session
-//
-//     // If user logged in
-//     if (req.user){
-//         User.findById(req.user.id, function (err, user) {
-//             if (err) return done(err);
-//
-//         var creds = _.find(req.user.tokens, {type:'lastfm'});
-//         // if creds already present
-//         if (user.lastfm && creds){
-//             req.flash('info', {msg:'Account already linked'});
-//
-//             return done(err, user, {msg:'Account already linked'})
-//         }
-//
-//         else{
-//             user.tokens.push({type:'lastfm', username:sessionKey.username, key:sessionKey.key });
-//             user.lastfm = sessionKey.key;
-//
-//             user.save(function(err){
-//                 if (err) return done(err);
-//                 req.flash('success', {msg:"Last.fm authentication success"});
-//                 return done(err, user, sessionKey);
-//             });
-//         }
-//     });
-//     }
-//     else{
-//         return done(null, false, {message:'Must be logged in'});
-//     }
-// }));
+router.get('/', function (req, res, next) {
+    var authUrl = lfm.getAuthenticationUrl({ 'cb' : config.get("protocol") + '://' + config.get("domain") + ':' + config.get("port") +'/auth/callback' });
+    res.redirect(authUrl);
+});
 
-module.exports = function(passport) {
-    router.get('/', function (req, res, next) {
-        res.send("");
+router.get('/callback', function (req, res, next) {
+    lfm.authenticate(req.query.token, function (err, session) {
+        if (err) {
+            return res.render('error', {title: "Something went wrong", message: err.message})
+        }
+
+        lfm.setSessionCredentials(session.name, session.key);
+        lfm.user.getInfo(function(err, info) {
+            if(err){
+                return res.render('error', {title: "Something went wrong", message: err.message})
+            }
+
+            var user = new User();
+            user.name = info.name;
+            user.realname = info.realname;
+            user.session_key = session.key;
+            user.save(function (err, user) {
+                if (err)
+                    res.send(err);
+                res.json(user);
+            });
+        });
+
     });
+});
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
-    router.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
+// =====================================
+// LOGOUT ==============================
+// =====================================
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
-    return router;
-};
-
-// router.get('/lastfm', passport.authenticate('lastfm'));
-// router.get('/lastfm/callback', function(req, res, next){
-//     passport.authenticate('lastfm', {failureRedirect:'/'}, function(err, user, sesh){
-//         res.redirect('/');
-//     })(req, {} );
-// });
+module.exports = router;
