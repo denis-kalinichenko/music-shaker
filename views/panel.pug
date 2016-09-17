@@ -1,42 +1,53 @@
 extends layout
 
 block content
+    .clearfix
+        img(src=userinfo.image[1]['#text']).avatar
+        h1 Hi, #{userinfo.name}
+    hr
+    br
     .panel.panel-primary
-        .panel-heading Friday, September 16, 2016
+        .panel-heading
+            span.glyphicon.glyphicon-calendar
+            | &nbsp; Friday, September 16, 2016
         .panel-body
-            p Ariana Grande & Iggy Azalea - Problem
-
-            .btn-group(role='group', aria-label='...')
-                button.btn.btn-default.excited.width(type='button') excited
-                button.btn.btn-default.happy.width(type='button') happy
-                button.btn.btn-default.sad.width(type='button') sad
-                button.btn.btn-default.angry.width(type='button') angry
-
+            label
+                span.glyphicon.glyphicon-flash(aria-hidden='true')
+                | &nbsp; Choose your emotional state on this day:
+            br
+            .btn-group(data-toggle='buttons')
+                label.btn.btn-warning
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Excited
+                label.btn.btn-success
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Happy
+                label.btn.btn-primary
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Sad
+                label.btn.btn-danger
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Angry
+    .panel.panel-primary
+        .panel-heading
+            span.glyphicon.glyphicon-calendar
+            | &nbsp; Friday, September 16, 2016
         .panel-body
-            p Kygo feat. Parson James - Stole The Show
-
-            .btn-group(role='group', aria-label='...')
-                button.btn.btn-default.excited.width(type='button') excited
-                button.btn.btn-default.happy.width(type='button') happy
-                button.btn.btn-default.sad.width(type='button') sad
-                button.btn.btn-default.angry.width(type='button') angry
-
-        .panel-body
-            p John Legend - All Of Me
-
-            .btn-group(role='group', aria-label='...')
-                button.btn.btn-default.excited.width(type='button') excited
-                button.btn.btn-default.happy.width(type='button') happy
-                button.btn.btn-default.sad.width(type='button') sad
-                button.btn.btn-default.angry.width(type='button') angry
-
-        .panel-body
-            p Demi Lovato - Body Say
-
-            .btn-group(role='group', aria-label='...')
-                button.btn.btn-default.excited.width(type='button') excited
-                button.btn.btn-default.happy.width(type='button') happy
-                button.btn.btn-default.sad.width(type='button') sad
-                button.btn.btn-default.angry.width(type='button') angry
-
+            label
+                span.glyphicon.glyphicon-flash(aria-hidden='true')
+                | &nbsp; Choose your emotional state on this day:
+            br
+            .btn-group(data-toggle='buttons')
+                label.btn.btn-warning
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Excited
+                label.btn.btn-success
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Happy
+                label.btn.btn-primary
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Sad
+                label.btn.btn-danger
+                    input(type='radio', name='options', autocomplete='off')
+                    |  Angry
 block scripts

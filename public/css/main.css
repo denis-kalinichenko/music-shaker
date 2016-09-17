@@ -34,24 +34,3 @@ body {
     margin-right: 20px;
     margin-top: 10px;
 }
-
-.excited {
-    background-color: #fdb900;
-}
-
-.happy {
-    background-color: #38B616;
-}
-
-.sad {
-    background-color: #6cb3fb;
-}
-
-.angry {
-    background-color: #f30707;
-}
-
-.width {
-    width: 100px;
-    text-transform: uppercase;
-}
