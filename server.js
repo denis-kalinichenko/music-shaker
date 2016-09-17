@@ -33,6 +33,7 @@ var router = express.Router();
 var index = require("./routes/index");
 var auth = require("./routes/auth");
 var demo = require("./routes/demo");
+var panel = require("./routes/panel");
 
 router.use(function (req, res, next) {
     next();
@@ -45,6 +46,7 @@ app.use('/', router)
     .use('/', index)
     .use('/auth/', auth)
     .use('/', demo)
+    .use('/', panel)
     .use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
