@@ -1,5 +1,5 @@
 {
-  "domain": "localhost",
+  "domain": "192.168.0.14",
   "protocol": "http",
   "port": 80,
   "mongoose": {

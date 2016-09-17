@@ -1,8 +1,18 @@
 extends layout
 
 block content
+    .clearfix
+        img(src=userinfo.image[1]['#text']).avatar
+        h1 Hi, #{userinfo.name}
     #canvas
         #box
     #results
+    table.table
+        each track in recentTracks.track
+            if track.date
+                tr
+                    td= track.artist['#text']
+                    td= track.name
+                    td= track.date['#text']
 block scripts
     script(src="js/demo.js" defer)

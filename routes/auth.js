@@ -35,6 +35,7 @@ router.get('/callback', function (req, res, next) {
 
                             req.session.name = _user.name;
                             req.session.realname = _user.realname;
+                            req.session.session_key = _user.session_key;
                             res.redirect("/");
                         });
                     } else {
@@ -43,6 +44,7 @@ router.get('/callback', function (req, res, next) {
                 } else {
                     req.session.name = user.name;
                     req.session.realname = user.realname;
+                    req.session.session_key = user.session_key;
                     res.redirect("/");
                 }
             });

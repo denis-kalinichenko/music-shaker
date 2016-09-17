@@ -11,14 +11,9 @@ block navbar
                 a.navbar-brand(href='/') Music Shaker
             // Collect the nav links, forms, and other content for toggling
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                ul.nav.navbar-nav
-                    li.active
-                        a(href='#')
-                            | Link
-                            span.sr-only (current)
-                    li
-                        a(href='#') Link
                 if session.name
+                    .nav.navbar-nav
+                        a(href="/generate").btn.btn-warning.btn-sm.navbar-btn Generate new playlist
                     ul.nav.navbar-nav.navbar-right
                         li.dropdown
                             a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')

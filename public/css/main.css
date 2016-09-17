@@ -27,3 +27,10 @@ body {
 #results {
     text-align: center;
 }
+
+.avatar {
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+}
