@@ -6,48 +6,43 @@ block content
         h1 Hi, #{userinfo.name}
     hr
     br
-    .panel.panel-primary
-        .panel-heading
-            span.glyphicon.glyphicon-calendar
-            | &nbsp; Friday, September 16, 2016
-        .panel-body
-            label
-                span.glyphicon.glyphicon-flash(aria-hidden='true')
-                | &nbsp; Choose your emotional state on this day:
-            br
-            .btn-group(data-toggle='buttons')
-                label.btn.btn-warning
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Excited
-                label.btn.btn-success
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Happy
-                label.btn.btn-primary
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Sad
-                label.btn.btn-danger
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Angry
-    .panel.panel-primary
-        .panel-heading
-            span.glyphicon.glyphicon-calendar
-            | &nbsp; Friday, September 16, 2016
-        .panel-body
-            label
-                span.glyphicon.glyphicon-flash(aria-hidden='true')
-                | &nbsp; Choose your emotional state on this day:
-            br
-            .btn-group(data-toggle='buttons')
-                label.btn.btn-warning
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Excited
-                label.btn.btn-success
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Happy
-                label.btn.btn-primary
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Sad
-                label.btn.btn-danger
-                    input(type='radio', name='options', autocomplete='off')
-                    |  Angry
+    each day in days
+        .panel.panel-primary(data-date=day.unix())
+            .panel-heading
+                span.glyphicon.glyphicon-calendar
+                | &nbsp; #{day.format("dddd, Do MMM YYYY")}
+            .panel-body
+                .alert.alert-success(role='alert').hide
+                    strong Done!
+                    | &nbsp;Training process is completed.
+                .progress-status.hide
+                    label Analyzing data...
+                    .progress
+                        .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width:0%')
+                            | 0%
+                .loader.hide
+                    label Collecting your data...
+                    img(src="img/ripple.gif")
+                .hide-area
+                    label
+                        span.glyphicon.glyphicon-flash(aria-hidden='true')
+                        | &nbsp; Choose your emotional state on this day:
+                    br
+                    .btn-group(data-toggle='buttons')
+                        label.btn.btn-warning
+                            input(type='radio', name='options' + day.unix(), autocomplete='off' value="1")
+                            |  Excited
+                        label.btn.btn-success
+                            input(type='radio', name='options' + day.unix(), autocomplete='off' value="2")
+                            |  Happy
+                        label.btn.btn-primary
+                            input(type='radio', name='options' + day.unix(), autocomplete='off' value="3")
+                            |  Sad
+                        label.btn.btn-danger
+                            input(type='radio', name='options' + day.unix(), autocomplete='off' value="4")
+                            |  Angry
+
 block scripts
+    script(src="components/async/dist/async.min.js" defer)
+    script(src="components/lodash/lodash.js" defer)
+    script(src="js/panel.js" defer)

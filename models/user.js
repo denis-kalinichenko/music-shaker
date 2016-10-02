@@ -11,7 +11,8 @@ var userSchema = mongoose.Schema({
         unique: true
     },
     realname: String,
-    session_key: String
+    session_key: String,
+    network: mongoose.Schema.Types.Mixed
 });
 
 // methods ======================

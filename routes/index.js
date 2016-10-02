@@ -8,7 +8,7 @@ var config = require('../config');
 router.get('/', function(req, res, next) {
     if(req.user)
     {
-        res.redirect('/demo');
+        res.redirect('/panel');
     }
         else {
         res.render('index', { title: 'OMP' });
