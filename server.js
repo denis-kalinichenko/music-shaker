@@ -34,6 +34,7 @@ var index = require("./routes/index");
 var auth = require("./routes/auth");
 var demo = require("./routes/demo");
 var panel = require("./routes/panel");
+var generate = require("./routes/generate");
 
 router.use(function (req, res, next) {
     next();
@@ -47,6 +48,7 @@ app.use('/', router)
     .use('/auth/', auth)
     .use('/', demo)
     .use('/', panel)
+    .use('/generate', generate)
     .use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler

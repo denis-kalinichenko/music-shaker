@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    br
+    div(style="text-align: center")
+        img(src=userinfo.image[3]['#text']).avatar2
+        br
+        br
+        br
+        label Choose one
+        br
+        button.btn.btn-warning.choose(type='button' data-emotion="excited") Excited
+        button.btn.btn-success.choose(type='button' data-emotion="happy") Happy
+        button.btn.btn-primary.choose(type='button' data-emotion="sad") Sad
+        button.btn.btn-danger.choose(type='button' data-emotion="angry") Angry
+
+    br
+    #output
+block scripts
+    script(src="components/async/dist/async.min.js" defer)
+    script(src="components/lodash/lodash.js" defer)
+    script(src="js/generate.js" defer)

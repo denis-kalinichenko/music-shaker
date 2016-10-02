@@ -46,7 +46,7 @@ module.exports = function (username, data, emotion, callback) {
             chillout: 0,
             blues: 0,
             rap: 0,
-            fun: 0
+            funk: 0
         };
 
         _.forIn(data, function (value, key) {
